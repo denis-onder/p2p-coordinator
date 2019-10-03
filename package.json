@@ -1,0 +1,19 @@
+{
+  "name": "nacho-night-p2p-coordinator",
+  "version": "1.0.0",
+  "description": "NachoNight P2P Coordinator",
+  "main": "app/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NachoNight/p2p-coordinator.git"
+  },
+  "author": "NachoNight",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NachoNight/p2p-coordinator/issues"
+  },
+  "homepage": "https://github.com/NachoNight/p2p-coordinator#readme"
+}
