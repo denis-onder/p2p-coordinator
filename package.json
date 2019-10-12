@@ -4,7 +4,7 @@
   "description": "NachoNight P2P Coordinator",
   "main": "app/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ."
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,24 @@
   "bugs": {
     "url": "https://github.com/NachoNight/p2p-coordinator/issues"
   },
-  "homepage": "https://github.com/NachoNight/p2p-coordinator#readme"
+  "homepage": "https://github.com/NachoNight/p2p-coordinator#readme",
+  "dependencies": {
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "peer": "^0.2.10"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^6.5.1",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.4.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.16.0",
+    "mocha": "^6.2.1",
+    "nodemon": "^1.19.3",
+    "prettier": "^1.18.2"
+  }
 }
