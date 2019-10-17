@@ -6,11 +6,11 @@ if [ ! -d "keys" ]; then
   mkdir keys
 fi
 
-cd keys
+cd ./keys
 
 rm *domain*
 
-Generating SSL Key/Cert pair...
+echo Generating SSL Key/Cert pair...
 
 openssl req \
   -newkey rsa:2048 -nodes -keyout domain.key \
