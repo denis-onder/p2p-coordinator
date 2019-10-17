@@ -29,11 +29,13 @@
     <script src="https://cdn.webrtc-experiment.com/getScreenId.js"></script>
     <script src="https://cdn.webrtc-experiment.com/screen.js"></script>
     <script>
-      const peer = new Peer({ host: 'localhost', port: 8000 });
+      const peer = new Peer('ignacius', { host: 'localhost', port: 8000 });
       peer.connect();
       // Create a session
       const screen = new Screen();
-      screen.onaddstream = (e) => document.body.appendChild(e.video);
+      screen.onaddstream = (e) => {
+        document.body.appendChild(e.video);
+      };
       screen.check();
       document.getElementById('share').onclick = () => screen.share();
     </script>
