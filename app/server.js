@@ -3,6 +3,7 @@ const { ExpressPeerServer } = require('peer');
 const { port, environment } = require('./config').server;
 const applyMiddleware = require('./middleware');
 const initRouter = require('./router');
+const handler = require('./handler');
 
 class Server {
   constructor() {
@@ -23,11 +24,11 @@ class Server {
     console.log('Initializing server...');
     applyMiddleware(this.app);
     initRouter(this.app);
+    handler(this.peerServer);
   }
 
   start() {
     this.app.use('/', this.peerServer);
-    this.peerServer.on('connection', (id) => console.log(`Connected: ${id}`));
   }
 
   stop(err = false) {
