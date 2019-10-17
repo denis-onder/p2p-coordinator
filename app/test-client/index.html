@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Test Client</title>
+  </head>
+  <body>
+    <h1>Ignacius, the P2P coordinator test client.</h1>
+    <script src="https://unpkg.com/peerjs@1.0.0/dist/peerjs.min.js"></script>
+    <script>
+      const peer = new Peer({ host: 'localhost', port: 8000 });
+      peer.connect();
+    </script>
+  </body>
+</html>

@@ -1,6 +1,8 @@
 const express = require('express');
 const { ExpressPeerServer } = require('peer');
 const { port, environment } = require('./config').server;
+const applyMiddleware = require('./middleware');
+const initRouter = require('./router');
 
 class Server {
   constructor() {
@@ -19,6 +21,8 @@ class Server {
 
   init() {
     console.log('Initializing server...');
+    applyMiddleware(this.app);
+    initRouter(this.app);
   }
 
   start() {

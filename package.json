@@ -4,7 +4,8 @@
   "description": "NachoNight P2P Coordinator",
   "main": "app/index.js",
   "scripts": {
-    "start": "node ."
+    "start": "node .",
+    "dev": "nodemon ."
   },
   "repository": {
     "type": "git",
@@ -17,8 +18,11 @@
   },
   "homepage": "https://github.com/NachoNight/p2p-coordinator#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "dotenv": "^8.1.0",
     "express": "^4.17.1",
+    "morgan": "^1.9.1",
+    "node-cache": "^4.2.1",
     "peer": "^0.2.10"
   },
   "devDependencies": {
@@ -32,7 +36,7 @@
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.16.0",
     "mocha": "^6.2.1",
-    "nodemon": "^1.19.3",
+    "nodemon": "^1.19.4",
     "prettier": "^1.18.2"
   }
 }
