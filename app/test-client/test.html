@@ -22,15 +22,21 @@
   </head>
   <body>
     <h1>Ignacius' stream:</h1>
+    <video id="output"></video>
     <script src="https://unpkg.com/peerjs@1.0.0/dist/peerjs.min.js"></script>
     <script>
       const peer = new Peer({ host: 'localhost', port: 8000 });
-      var conn = peer.connect('ignacius');
-      // on open will be launch when you successfully connect to PeerServer
-      conn.on('open', function() {
-        console.log(conn);
-        // here you have conn.id
-        conn.send('hi!');
+      const connection = peer.connect('ignacius');
+      connection.on('open', () => {
+        console.log('Connected');
+      });
+      peer.on('call', (call) => {
+        console.log('Calling');
+        call.answer();
+        call.on(
+          'stream',
+          (stream) => (document.getElementById('output').srcObject = stream),
+        );
       });
     </script>
   </body>

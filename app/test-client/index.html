@@ -30,14 +30,19 @@
     <script src="https://cdn.webrtc-experiment.com/screen.js"></script>
     <script>
       const peer = new Peer('ignacius', { host: 'localhost', port: 8000 });
-      peer.connect();
+      let stream;
       // Create a session
       const screen = new Screen();
       screen.onaddstream = (e) => {
         document.body.appendChild(e.video);
+        stream = e.stream;
       };
       screen.check();
       document.getElementById('share').onclick = () => screen.share();
+      peer.on('connection', (conn) => {
+        console.log('Connection established');
+        peer.call(conn.peer, stream);
+      });
     </script>
   </body>
 </html>
