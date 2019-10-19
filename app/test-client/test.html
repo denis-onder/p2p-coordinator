@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>A random viewer</title>
+    <style>
+      body {
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        color: #ffffff;
+        background-color: rgb(101, 0, 196);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      video {
+        width: 75%;
+        height: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Ignacius' stream:</h1>
+    <video autoplay controls id="output"></video>
+    <script src="https://unpkg.com/peerjs@1.0.0/dist/peerjs.min.js"></script>
+    <script>
+      const peer = new Peer({ host: 'localhost', port: 8000 });
+      const connection = peer.connect('ignacius');
+      connection.on('open', () => {
+        console.log('Connected');
+      });
+      peer.on('call', (call) => {
+        console.log('Calling');
+        call.answer();
+        call.on(
+          'stream',
+          (stream) => (document.getElementById('output').srcObject = stream),
+        );
+      });
+    </script>
+  </body>
+</html>
