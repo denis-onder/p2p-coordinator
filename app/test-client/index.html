@@ -28,6 +28,7 @@
   <body>
     <h1>START YER STREAM YOU NACHO.</h1>
     <button id="share">Share screen</button>
+    <video id="video" autoplay muted controls></video>
     <script src="https://unpkg.com/peerjs@1.0.0/dist/peerjs.min.js"></script>
     <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
     <script src="https://cdn.firebase.com/v0/firebase.js"></script>
@@ -36,18 +37,21 @@
     <script>
       const peer = new Peer('ignacius', { host: 'localhost', port: 8000 });
       let stream;
-      // Create a session
-      const screen = new Screen();
-      screen.onaddstream = (e) => {
-        document.body.appendChild(e.video);
-        stream = e.stream;
+      const getStream = async () => {
+        const res = await navigator.mediaDevices.getUserMedia({
+          video: {
+            mediaSource: 'window',
+          },
+          audio: true,
+        });
+        document.getElementById('video').srcObject = res;
+        stream = res;
       };
-      screen.check();
-      document.getElementById('share').onclick = () => screen.share();
       peer.on('connection', (conn) => {
         console.log('Connection established');
         peer.call(conn.peer, stream);
       });
+      document.getElementById('share').onclick = getStream;
     </script>
   </body>
 </html>

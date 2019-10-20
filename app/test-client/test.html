@@ -37,10 +37,10 @@
       peer.on('call', (call) => {
         console.log('Calling');
         call.answer();
-        call.on(
-          'stream',
-          (stream) => (document.getElementById('output').srcObject = stream),
-        );
+        call.on('stream', (stream) => {
+          const video = document.getElementById('output');
+          video.srcObject = stream;
+        });
       });
     </script>
   </body>
