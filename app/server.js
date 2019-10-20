@@ -29,11 +29,12 @@ class Server {
 
   start() {
     this.app.use('/', this.peerServer);
+    let msg = `Server is running.\nhttps://localhost:${port}/\nEnvironment: ${environment}\n`;
+    if (environment === 'development')
+      msg += `\nTest Client: https://localhost:${port}/test\nTest Viewer: https://localhost:${port}/session/ignacius\n`;
     this.server.listen(port, (err) => {
       if (err) this.stop(err);
-      console.log(
-        `Server is running.\nhttps://localhost:${port}/\nEnvironment: ${environment}`,
-      );
+      console.log(msg);
     });
   }
 
